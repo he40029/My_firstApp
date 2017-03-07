@@ -2,10 +2,12 @@ package com.lana.svet.my_firstapp;
 
 import android.content.Context;
 import android.graphics.Color;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.BaseAdapter;
+import android.widget.ImageView;
 import android.widget.TextView;
 
 import java.util.ArrayList;
@@ -48,19 +50,22 @@ public class MyAdapter extends BaseAdapter {
             someView = inflater.inflate(R.layout.listview_item, arg2, false);
 
         //получаем картинку
-        /*DownloadImage _imgAva = new DownloadImage(data.get(position).getAvatar());
+        DownloadImage _imgAva = new DownloadImage(data.get(position).getAvatar());
         Thread dLoadImg = new Thread(_imgAva);
         dLoadImg.start();
         try {
             dLoadImg.join();
         } catch (InterruptedException e) {
             Log.d("debag","Недождались ответ из потока");
-        }*/
-        new DownloadImageTask(data.get(position).getAvatar(), someView).execute();
+        }
+         ImageView i = (ImageView) someView.findViewById(R.id.image_avatar);
+        i.setImageBitmap(_imgAva.getImage());
 
 
-       /* ImageView i = (ImageView) someView.findViewById(R.id.image_avatar);
-        i.setImageBitmap(_imgAva.getImage());*/
+       // new DownloadImageTask(data.get(position).getAvatar(), someView).execute();
+
+
+
 
         //Обявляем объекты с текстом и связываем их с разметкой
         TextView name = (TextView) someView.findViewById(R.id.item_name);

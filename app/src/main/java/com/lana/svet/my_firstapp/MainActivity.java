@@ -20,9 +20,7 @@ public class MainActivity extends AppCompatActivity {
         final ListView lv = (ListView)findViewById(R.id.listview);
 
         /*получение данных*/
-
         //  инициируем запрос данных к серверу
-
         requestServer = new RequestServer(PATH);
         Thread myThreadRequestServer = new Thread(requestServer);
         myThreadRequestServer.start();
